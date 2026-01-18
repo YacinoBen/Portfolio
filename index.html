@@ -450,7 +450,7 @@
 </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-white">
+ <section id="projects" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-12">
@@ -471,103 +471,208 @@
                 <label for="tab-articles" class="btn-tab cursor-pointer px-6 py-2 rounded-full font-semibold border-2 transition-all">Articles Medium</label>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="flagship-wrapper card-qt mb-12">
+    <div class="bg-gray-50 rounded-3xl overflow-hidden border border-indigo-100 shadow-xl flex flex-col lg:flex-row w-full">
+        <div class="lg:w-2/5 h-64 lg:h-auto bg-gray-200 flex items-center justify-center p-6">
+            <img src="img/work/qt/CaptureMoment/home.jpg" class="max-w-full max-h-full object-contain shadow-md rounded-lg">
+        </div>
+
+        <div class="lg:w-3/5 p-8 lg:p-12">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <span class="text-indigo-600 font-bold text-xs uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full">Projet Majeur • 2025 - Présent</span>
+                    <h3 class="text-3xl font-extrabold text-gray-900 mt-2">Capture Moment</h3>
+                </div>
+                <a href="https://github.com/YacinoBen/CaptureMoment" target="_blank" class="bg-gray-900 text-white px-5 py-2 rounded-xl hover:bg-indigo-600 transition-all shadow-lg font-bold text-sm">
+                    Github
+                </a>
+            </div>
+
+            <p class="text-gray-700 font-semibold mb-4">Senior C++ Developer • Application de traitement photo modulaire haute performance.</p>
+            
+            <ul class="text-gray-600 text-sm space-y-2 mb-6 list-none">
+                <li class="flex items-start gap-2">
+                    <span class="text-indigo-500 font-bold">●</span>
+                    <span>Rendu graphique via l'abstraction GPU de Qt (<strong>QRhi</strong>) et <strong>Scene Graph (SGS)</strong>.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-indigo-500 font-bold">●</span>
+                    <span>Optimisation et pipelines de calcul via <strong>Halide</strong> pour la parallélisation massive.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-indigo-500 font-bold">●</span>
+                    <span>Moteur de calcul <strong>multi-threadé</strong> C++ avec gestion fine de la concurrence et de la mémoire.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-indigo-500 font-bold">●</span>
+                    <span>Automatisation via <strong>GitHub Actions (CI/CD)</strong> pour garantir la robustesse du code.</span>
+                </li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 border-t border-gray-200 pt-6">
+                <span class="px-2 py-0.5 bg-white border border-gray-200 text-gray-700 text-[10px] font-bold rounded shadow-sm">C++20/23</span>
+                <span class="px-2 py-0.5 bg-white border border-gray-200 text-gray-700 text-[10px] font-bold rounded shadow-sm">Qt6/QML</span>
+                <span class="px-2 py-0.5 bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-bold rounded shadow-sm">QRhi / GLSL</span>
+                <span class="px-2 py-0.5 bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-bold rounded shadow-sm">Halide</span>
+                <span class="px-2 py-0.5 bg-white border border-gray-200 text-gray-700 text-[10px] font-bold rounded shadow-sm">OpenImageIO</span>
+                <span class="px-2 py-0.5 bg-white border border-gray-200 text-gray-700 text-[10px] font-bold rounded shadow-sm">OpenColorIO</span>
+                <span class="px-2 py-0.5 bg-white border border-gray-200 text-gray-700 text-[10px] font-bold rounded shadow-sm">Exiv2</span>
+                <span class="px-2 py-0.5 bg-white border border-gray-200 text-gray-700 text-[10px] font-bold rounded shadow-sm">magic-enum</span>
+                <span class="px-2 py-0.5 bg-white border border-gray-200 text-gray-700 text-[10px] font-bold rounded shadow-sm">SQLite</span>
+                <span class="px-2 py-0.5 bg-white border border-gray-200 text-gray-700 text-[10px] font-bold rounded shadow-sm">vcpkg</span>
+                <span class="px-2 py-0.5 bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-bold rounded shadow-sm">Multi-threading</span>
+                <span class="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-500 text-[10px] font-bold rounded shadow-sm">GitHub Actions</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="project-card card-qt bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                    <div class="h-56 bg-gray-200"><img src="img/work/qt/CaptureMoment/home.jpg" class="w-full h-full object-cover"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold">Capture Moment</h3>
-                        <p class="text-gray-600 text-sm mb-4">Éditeur photo professionnel haute performance.</p>
-                        <a href="https://github.com/YacinoBen/CaptureMoment" target="_blank" class="text-indigo-600 font-bold">Github →</a>
+                <div class="project-card card-qt bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="h-52 bg-gray-100 flex items-center justify-center p-4">
+                        <img src="img/work/qt/ImageEffect/main.jpg" class="max-w-full max-h-full object-contain rounded shadow-sm">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold text-xl mb-2 text-gray-900">Image Effect</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Éditeur dynamique utilisant le module <strong>Qt Graphical Effects</strong>. Implémentation de filtres temps réel (contraste, luminosité, flou) avec une interface fluide en <strong>QML</strong> et un backend <strong>C++/CMake</strong>.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded font-bold uppercase">Qt / QML</span>
+                            <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded font-bold uppercase">CMake</span>
+                        </div>
+                        <a href="https://github.com/Styleoshin/ImageEffect" target="_blank" class="text-indigo-600 font-bold text-sm">Github →</a>
                     </div>
                 </div>
 
-                <div class="project-card card-qt bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                    <div class="h-56 bg-pink-100"><img src="img/work/qt/ImageEffect/main.jpg" class="w-full h-full object-cover"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold">Image Effect</h3>
-                        <p class="text-gray-600 text-sm mb-4">Traitement d'images (contraste, flou) via Qt Graphical Effects & QML.</p>
-                        <a href="https://github.com/Styleoshin/ImageEffect" target="_blank" class="text-indigo-600 font-bold">Github →</a>
+                <div class="project-card card-qt bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="h-52 bg-gray-50 flex items-center justify-center p-4">
+                        <img src="img/work/qt/hackathon/main.png" class="max-w-full max-h-full object-contain rounded">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold text-lg mb-2">We Care</h3>
+                        <p class="text-gray-600 text-sm mb-4">Application mobile santé développée en 72h lors d'un Hackathon.</p>
+                        <a href="https://github.com/salah-walid/Hackathon" target="_blank" class="text-indigo-600 font-bold text-sm">Github →</a>
                     </div>
                 </div>
 
-                <div class="project-card card-qt bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                    <div class="h-56 bg-indigo-50"><img src="img/work/qt/hackathon/main.png" class="w-full h-full object-cover"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold">We Care (Hackathon)</h3>
-                        <p class="text-gray-600 text-sm mb-4">Prototype d'application mobile santé (72h Hackathon).</p>
-                        <a href="https://github.com/salah-walid/Hackathon" target="_blank" class="text-indigo-600 font-bold">Github →</a>
+                <div class="project-card card-qt bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="h-52 bg-gray-50 flex items-center justify-center p-4">
+                        <img src="img/work/qt/chronos/main.png" class="max-w-full max-h-full object-contain rounded">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold text-lg mb-2">Chronos Browser</h3>
+                        <p class="text-gray-600 text-sm mb-4">Navigateur web performant basé sur QtWebEngine.</p>
+                        <a href="https://github.com/Styleoshin/Chronos" target="_blank" class="text-indigo-600 font-bold text-sm">Github →</a>
                     </div>
                 </div>
 
-                <div class="project-card card-qt bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                    <div class="h-56 bg-gray-100"><img src="img/work/qt/chronos/main.png" class="w-full h-full object-cover"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold">Chronos Browser</h3>
-                        <p class="text-gray-600 text-sm mb-4">Navigateur multiplateforme basé sur QtWebEngine.</p>
-                        <a href="https://github.com/Styleoshin/Chronos" target="_blank" class="text-indigo-600 font-bold">Github →</a>
+     <div class="project-card card-python bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col">
+    <div class="h-52 bg-teal-50 flex items-center justify-center p-4 border-b border-gray-50">
+        <img src="img/work/project/photomathon/main.png" class="max-w-full max-h-full object-contain rounded shadow-sm">
+    </div>
+    
+    <div class="p-6 flex-grow">
+        <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold text-xl text-gray-900">Photomathon AI</h3>
+            <span class="text-[10px] px-2 py-1 bg-teal-100 text-teal-700 font-bold rounded-full uppercase">Expérience Pro</span>
+        </div>
+        
+        <p class="text-gray-500 text-xs font-semibold mb-3">Stage Développeur Python IA @ Ktalyse</p>
+        
+        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+            Développement d'un système d'analyse faciale temps réel pour la <strong>conformité biométrique</strong> des photos d'identité. 
+            Conception d'un prototype de reconnaissance de <strong>gestes de la main</strong> (MediaPipe) dédié à l'accessibilité numérique.
+        </p>
+
+        <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-700 border border-gray-200 rounded font-medium">OpenCV</span>
+            <span class="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-700 border border-gray-200 rounded font-medium">MediaPipe</span>
+            <span class="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-700 border border-gray-200 rounded font-medium">Dlib</span>
+            <span class="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-700 border border-gray-200 rounded font-medium">GitLab CI</span>
+        </div>
+
+        <div class="pt-4 border-t border-gray-100 mt-auto">
+            <span class="text-xs text-gray-400 italic">Environnement : Agile, Temps réel, R&D</span>
+        </div>
+    </div>
+</div>
+                <div class="project-card card-python bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="h-52 bg-indigo-50 flex items-center justify-center p-4">
+                        <img src="img/work/project/master/main.png" class="max-w-full max-h-full object-contain rounded">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold text-lg mb-2">Transformer NMT</h3>
+                        <p class="text-gray-600 text-sm mb-4">Implémentation de réseaux de neurones pour la traduction automatique.</p>
+                        <a href="https://github.com/Styleoshin/Transformer" target="_blank" class="text-indigo-600 font-bold text-sm">Github →</a>
                     </div>
                 </div>
 
-                <div class="project-card card-python bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                    <div class="h-56 bg-teal-500"><img src="img/work/project/photomathon/main.png" class="w-full h-full object-cover"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold">Photomathon</h3>
-                        <p class="text-gray-600 text-sm mb-4">Analyse en temps réel des émotions faciales.</p>
+                <div class="project-card card-java bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="h-52 bg-gray-50 flex items-center justify-center p-4">
+                        <img src="img/no_img.png" class="max-w-full max-h-full object-contain opacity-20">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold text-lg mb-2">UmlEditor</h3>
+                        <p class="text-gray-600 text-sm mb-4">Outil de conception de diagrammes UML.</p>
+                        <a href="https://github.com/Styleoshin/UmlEditor" target="_blank" class="text-indigo-600 font-bold text-sm">Github →</a>
                     </div>
                 </div>
 
-                <div class="project-card card-python bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                    <div class="h-56 bg-indigo-900"><img src="img/work/project/master/main.png" class="w-full h-full object-cover"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold">Transformer NMT</h3>
-                        <p class="text-gray-600 text-sm mb-4">Recherche sur la traduction automatique neuronale.</p>
-                        <a href="https://github.com/Styleoshin/Transformer" target="_blank" class="text-indigo-600 font-bold">Github →</a>
+                <div class="project-card card-java bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="h-52 bg-sky-50 flex items-center justify-center p-4">
+                        <img src="img/work/javafx/scrabble/main.jpg" class="max-w-full max-h-full object-contain rounded">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold text-lg mb-2">Scrabble Online</h3>
+                        <p class="text-gray-600 text-sm mb-4">Système multi-joueurs complet via Sockets TCP/IP.</p>
+                        <a href="https://github.com/Styleoshin/scrabble_network" target="_blank" class="text-indigo-600 font-bold text-sm">Github →</a>
                     </div>
                 </div>
 
-                <div class="project-card card-java bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                    <div class="h-56 bg-blue-100"><img src="img/no_img.png" class="w-full h-full object-cover"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold">UmlEditor</h3>
-                        <p class="text-gray-600 text-sm mb-4">Outil de modélisation UML open-source avec interface simplifiée.</p>
-                        <a href="https://github.com/Styleoshin/UmlEditor" target="_blank" class="text-indigo-600 font-bold">Github →</a>
+      <div class="project-card card-articles bg-white rounded-2xl shadow-xl overflow-hidden border-l-8 border-black flex flex-col">
+    <div class="p-6 flex-grow flex flex-col">
+        <div class="flex justify-between items-start mb-2">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Architecture & Framework</span>
+            <i data-lucide="book-open" class="text-gray-300" width="18"></i>
+        </div>
+        
+        <h3 class="font-bold text-xl mt-1 text-gray-900">Why use Qt & QML?</h3>
+        
+        <p class="text-gray-600 text-sm leading-relaxed mt-4 mb-4">
+            Une analyse approfondie du framework <strong>Qt</strong> et de sa philosophie <em>"Code less. Create more. Deploy everywhere."</em> 
+            Exploration de la puissance du <strong>QML</strong> pour des interfaces haute performance, présentation de l'IDE <strong>Qt Creator</strong>, et revue des standards industriels utilisant Qt comme <strong>KDE</strong> ou <strong>Maya</strong>.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+            <span class="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-600 rounded font-bold">CROSS-PLATFORM</span>
+            <span class="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-600 rounded font-bold">NATIVE SPEED</span>
+            <span class="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-600 rounded font-bold">GUI</span>
+        </div>
+
+        <a href="https://medium.com/@yacine.benaffane/why-we-should-use-the-qt-framework-and-the-qml-f01c4edb13cd" 
+           target="_blank" 
+           class="mt-auto inline-flex items-center gap-2 text-indigo-600 font-bold text-sm hover:translate-x-1 transition-transform">
+            Lire sur Medium 
+            <i data-lucide="arrow-right" width="16"></i>
+        </a>
+    </div>
+</div>
+
+                <div class="project-card card-articles bg-white rounded-2xl shadow-xl overflow-hidden border-l-8 border-black flex flex-col">
+                    <div class="p-6 flex-grow flex flex-col justify-center">
+                        <span class="text-xs font-bold text-gray-400 uppercase">IA</span>
+                        <h3 class="font-bold text-lg mt-1">Transformer vs RNN/CNN</h3>
+                        <a href="https://medium.com/analytics-vidhya/transformer-vs-rnn-and-cnn-18eeefa3602b" target="_blank" class="text-indigo-600 font-bold text-sm mt-4">Medium →</a>
                     </div>
                 </div>
 
-                <div class="project-card card-java bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                    <div class="h-56 bg-sky-100"><img src="img/work/javafx/scrabble/main.jpg" class="w-full h-full object-cover"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold">Scrabble Online</h3>
-                        <p class="text-gray-600 text-sm mb-4">Jeu multi-joueurs en ligne via sockets TCP.</p>
-                        <a href="https://github.com/Styleoshin/scrabble_network" target="_blank" class="text-indigo-600 font-bold">Github →</a>
-                    </div>
-                </div>
-
-                <div class="project-card card-articles bg-white rounded-2xl shadow-xl overflow-hidden border-l-8 border-black">
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-gray-400 uppercase">Architecture</span>
-                        <h3 class="text-xl font-bold mt-1">Why use Qt & QML?</h3>
-                        <p class="text-gray-600 text-sm mb-4">Analyse des avantages du framework pour le développement d'interfaces.</p>
-                        <a href="https://medium.com/@yacine.benaffane/why-we-should-use-the-qt-framework-and-the-qml-f01c4edb13cd" target="_blank" class="inline-block bg-black text-white px-4 py-2 rounded text-sm">Lire sur Medium</a>
-                    </div>
-                </div>
-
-                <div class="project-card card-articles bg-white rounded-2xl shadow-xl overflow-hidden border-l-8 border-black">
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-gray-400 uppercase">IA & NLP</span>
-                        <h3 class="text-xl font-bold mt-1">Transformer vs RNN/CNN</h3>
-                        <p class="text-gray-600 text-sm mb-4">Série d'articles comparatifs sur les architectures de traduction.</p>
-                        <a href="https://medium.com/analytics-vidhya/transformer-vs-rnn-and-cnn-18eeefa3602b" target="_blank" class="inline-block bg-black text-white px-4 py-2 rounded text-sm">Lire sur Medium</a>
-                    </div>
-                </div>
-
-                <div class="project-card card-articles bg-white rounded-2xl shadow-xl overflow-hidden border-l-8 border-black">
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-gray-400 uppercase">IA & Vision par ordinateur</span>
-                        <h3 class="text-xl font-bold mt-1">[Deep Learning] Hand gesture recognition</h3>
-                        <p class="text-gray-600 text-sm mb-4">La reconnaissance gestuelle avec vision par ordinateur.</p>
-                        <a href="https://medium.com/becoming-human/deep-learning-hand-gesture-recognition-b265f4e6cf02" target="_blank" class="inline-block bg-black text-white px-4 py-2 rounded text-sm">Lire sur Medium</a>
+                <div class="project-card card-articles bg-white rounded-2xl shadow-xl overflow-hidden border-l-8 border-black flex flex-col">
+                    <div class="p-6 flex-grow flex flex-col justify-center">
+                        <span class="text-xs font-bold text-gray-400 uppercase">Computer Vision</span>
+                        <h3 class="font-bold text-lg mt-1">Hand Gesture Recognition</h3>
+                        <a href="https://medium.com/becoming-human/deep-learning-hand-gesture-recognition-b265f4e6cf02" target="_blank" class="text-indigo-600 font-bold text-sm mt-4">Medium →</a>
                     </div>
                 </div>
 
@@ -575,6 +680,60 @@
         </div>
     </div>
 </section>
+
+<style>
+    /* Reset & Filtrage */
+    .project-card, .flagship-wrapper { display: none; }
+
+    /* Affichage conditionnel */
+    #tab-qt:checked ~ .flagship-wrapper.card-qt { display: flex; }
+    #tab-qt:checked ~ .grid .card-qt,
+    #tab-python:checked ~ .grid .card-python,
+    #tab-java:checked ~ .grid .card-java,
+    #tab-articles:checked ~ .grid .card-articles { display: flex; }
+
+    /* Maintenance du layout Grid */
+    #tab-qt:checked ~ .grid, #tab-python:checked ~ .grid, 
+    #tab-java:checked ~ .grid, #tab-articles:checked ~ .grid {
+        display: grid !important;
+    }
+
+    /* Style Onglets */
+    .btn-tab { border-color: #f3f4f6; color: #9ca3af; }
+    #tab-qt:checked ~ div label[for="tab-qt"],
+    #tab-python:checked ~ div label[for="tab-python"],
+    #tab-java:checked ~ div label[for="tab-java"],
+    #tab-articles:checked ~ div label[for="tab-articles"] {
+        border-color: #4f46e5;
+        color: #4f46e5;
+        background-color: #f5f3ff;
+    }
+</style>
+
+<style>
+    /* 1. État par défaut : On cache tout */
+    .project-card, .flagship-wrapper { display: none; }
+
+    /* 2. Affichage conditionnel selon les Radio Buttons */
+    #tab-qt:checked ~ .flagship-wrapper.card-qt { display: flex; }
+    #tab-qt:checked ~ .grid .card-qt { display: block; }
+
+    #tab-python:checked ~ .grid .card-python { display: block; }
+    #tab-java:checked ~ .grid .card-java { display: block; }
+    #tab-articles:checked ~ .grid .card-articles { display: block; }
+
+    /* 3. Style des boutons de navigation actifs */
+    .btn-tab { border-color: #f3f4f6; color: #9ca3af; }
+    
+    #tab-qt:checked ~ div label[for="tab-qt"],
+    #tab-python:checked ~ div label[for="tab-python"],
+    #tab-java:checked ~ div label[for="tab-java"],
+    #tab-articles:checked ~ div label[for="tab-articles"] {
+        border-color: #4f46e5;
+        color: #4f46e5;
+        background-color: #f5f3ff;
+    }
+</style>
 
 <style>
     .hidden { display: none; }
