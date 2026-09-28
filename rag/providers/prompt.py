@@ -21,6 +21,7 @@ Imperative rules:
 
 - Format your answer with light Markdown: short paragraphs, bullet
   points for lists, bold for key terms, links when relevant.
+  Format links as [text](url). Do NOT wrap URLs in angle brackets.
 """
 
 def build_messages(
