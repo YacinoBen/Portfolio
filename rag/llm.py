@@ -59,7 +59,7 @@ async def stream_answer(
 
     stream = await get_client().chat.completions.create(
         model=get_settings().llm_model,
-        max_tokens=1000,
+        max_tokens=4000,
         messages=build_messages(question, history, context),
         temperature=get_settings().temperature,
         stream=True,
