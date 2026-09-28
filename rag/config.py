@@ -15,7 +15,7 @@ class Settings(BaseSettings):
 
     llm_model: str = "gemini-3.8-flash"
     embedding_model: str = "gemini-embedding-2"
-    reasoning_effort: str = "low",
+    reasoning_effort: str = "low"
 
     # RAG settings
     chunk_size: int = 1000
