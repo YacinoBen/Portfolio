@@ -6,8 +6,7 @@ dependencies = [
     "fastapi",
     "pydantic",
     "pydantic-settings",
-    "openai",
-    "langdetect",
+    "openai"
 ]
 
 [tool.vercel]
