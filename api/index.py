@@ -12,6 +12,7 @@ from fastapi.responses import StreamingResponse
 from openai import RateLimitError
 from pydantic import BaseModel
 
+from rag.config import get_settings
 from rag.llm import stream_answer
 from rag.retrieval import format_context, search
 from rag.schemas import (
@@ -24,6 +25,7 @@ from rag.schemas import (
 )
 
 logger = logging.getLogger("uvicorn.error")
+settings = get_settings()
 
 app = FastAPI(
     title="Portfolio RAG API",
@@ -33,7 +35,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # dev only — restrict to your Vercel domain before going live
+    allow_origins=[o.strip() for o in settings.allowed_origins.split(",")],
     allow_methods=["*"],
     allow_headers=["*"],
 )

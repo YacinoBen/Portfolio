@@ -82,8 +82,8 @@ def load_index() -> tuple[Chunk, ...]:
     return tuple(Chunk.model_validate(item) for item in data)
 
 
-async def search(query: str, k: int | None = None) -> list[Chunk]:
-    """Return the k chunks most similar to the query (cosine similarity on embeddings)."""
+async def search(query: str, k: int | None = None) -> list[tuple[float, Chunk]]:
+    """Return the k best chunks WITH their scores (0..1), best first."""
     settings = get_settings()
     (query_embedding,) = await embed_texts([query])
 
@@ -92,13 +92,17 @@ async def search(query: str, k: int | None = None) -> list[Chunk]:
         for chunk in load_index()
     ]
     scored.sort(key=lambda pair: pair[0], reverse=True)
-    return [chunk for _, chunk in scored[: (k or settings.top_k)]]
+    return scored[: (k or settings.top_k)]
+
+
+def format_context(scored: list[tuple[float, Chunk]]) -> str:
+    """Format scored chunks for injection into the system prompt."""
+    return "\n---\n".join(f"[{c.source}]\n{c.text}" for _, c in scored)
 
 
 async def build_context(query: str) -> str:
-    """Format the top-k chunks for injection into the system prompt."""
-    chunks = await search(query)
-    return "\n---\n".join(f"[{c.source}]\n{c.text}" for c in chunks)
+    """One-shot helper: search + format (used by scripts/tests)."""
+    return format_context(await search(query))
 
 
 if __name__ == "__main__":

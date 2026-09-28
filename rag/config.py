@@ -9,6 +9,8 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    allowed_origins: str = "http://127.0.0.1:5500,http://localhost:5500"
+
     gemini_api_key: SecretStr
 
     llm_model: str = "gemini-2.5-flash"

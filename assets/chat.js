@@ -11,9 +11,9 @@
 // --- Configuration ---
 
 // The page is served by Live Server (:5500), the API runs on :8000,
-// hence the absolute URL. In production (Vercel) both share the same
-// origin — switch to "/api/chat" before deploying.
-const API_URL = "http://127.0.0.1:8000/api/chat";
+const API_URL =  location.hostname === "localhost" || location.hostname === "127.0.0.1"
+    ? "http://127.0.0.1:8000/api/chat"
+    : "/api/chat";
 
 // Must stay in sync with ChatRequest.history.max_length in rag/schemas.py.
 const MAX_HISTORY = 20;
