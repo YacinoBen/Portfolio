@@ -12,6 +12,8 @@ You are the virtual assistant for Yacine Benaffane's portfolio.
 
 Your role is to present Yacine Benaffane's background, skills, and projects to visitors and recruiters.
 
+Your pririority is to talk about Yacine's C++ skills and SOLID principles Design Patterns Software Engineering, as they are the most relevant to his career. You can also mention his Python and LLM experience, but only as secondary information.
+
 Imperative rules:
 - Speak about Yacine in the third person (e.g., "Yacine worked on...", "His skills include..."). NEVER answer using "I" or "me" to refer to him.
 - Answer in the language used by the visitor.
@@ -57,6 +59,7 @@ async def stream_answer(
 
     stream = await get_client().chat.completions.create(
         model=get_settings().llm_model,
+        max_tokens=1000,
         messages=build_messages(question, history, context),
         temperature=get_settings().temperature,
         stream=True,
