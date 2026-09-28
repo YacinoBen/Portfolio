@@ -5,6 +5,7 @@
  */
 
 import { sendMessage } from "./chat.js";
+import { renderMarkdown } from "./markdown.js";
 
 const fab = document.getElementById("chat-fab");
 const badge = document.getElementById("chat-fab-badge");
@@ -29,7 +30,7 @@ function scrollBottom() {
 function addBubble(sender, text = "") {
     const bubble = document.createElement("div");
     bubble.className = `chat-msg ${sender}`;
-    bubble.textContent = text;
+    if (text) bubble.innerHTML = renderMarkdown(text);
     messagesEl.appendChild(bubble);
     scrollBottom();
     return bubble;
@@ -98,6 +99,7 @@ function ask(question) {
     scrollBottom();
 
     let bubble = null;
+    let bubbleText = "";
 
     sendMessage(question, {
         onToken(t) {
@@ -106,7 +108,8 @@ function ask(question) {
                 bubble = addBubble("bot");
                 bubble.classList.add("streaming");
             }
-            bubble.textContent += t;
+            bubbleText += t;
+            bubble.innerHTML = renderMarkdown(bubbleText);
             scrollBottom();
         },
         onError(msg) {

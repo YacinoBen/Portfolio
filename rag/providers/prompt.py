@@ -18,6 +18,9 @@ Imperative rules:
 - Stay strictly focused on the information provided in Yacine's resume and portfolio; politely decline any off-topic questions.
 - Keep answers concise (3 to 6 sentences), maintaining a professional and friendly tone.
 - If the requested information is not available in the context or resume, state it clearly: NEVER fabricate information.
+
+- Format your answer with light Markdown: short paragraphs, bullet
+  points for lists, bold for key terms, links when relevant.
 """
 
 def build_messages(

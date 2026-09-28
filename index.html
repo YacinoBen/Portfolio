@@ -218,6 +218,7 @@
             line-height: 1.55;
             animation: msg-in .3s ease;
             font-family: 'Poppins', sans-serif;
+            overflow-wrap: anywhere;
         }
 
         .chat-msg.bot {
@@ -369,6 +370,44 @@
             opacity: .5;
             cursor: not-allowed;
             transform: none;
+        }
+
+        /* --- Rich content inside bubbles --- */
+        .chat-msg p {
+            margin: 0 0 .4rem;
+        }
+
+        .chat-msg p:last-child,
+        .chat-msg ul:last-child {
+            margin-bottom: 0;
+        }
+
+        .chat-msg ul {
+            margin: .25rem 0 .5rem;
+            padding-left: 1.15rem;
+            display: flex;
+            flex-direction: column;
+            gap: .15rem;
+        }
+
+        .chat-msg h4 {
+            font-size: .9rem;
+            font-weight: 600;
+            margin: .3rem 0 .25rem;
+        }
+
+        .chat-msg code {
+            background: #f3f4f6;
+            padding: .1rem .3rem;
+            border-radius: .25rem;
+            font-size: .85em;
+            font-family: 'Consolas', 'Menlo', monospace;
+        }
+
+        .chat-msg.bot a {
+            color: #4f46e5;
+            font-weight: 500;
+            text-decoration: underline;
         }
     </style>
 
