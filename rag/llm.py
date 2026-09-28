@@ -1,71 +1,60 @@
-import asyncio
-from collections.abc import AsyncGenerator
-from functools import lru_cache
+"""Facade — the ONLY public entry point for LLM calls.
 
-from openai import AsyncOpenAI
-
-from rag.config import get_settings
-from rag.schemas import ChatMessage
-
-SYSTEM_PROMPT = """\
-You are the virtual assistant for Yacine Benaffane's portfolio.
-
-Your role is to present Yacine Benaffane's background, skills, and projects to visitors and recruiters.
-
-Your pririority is to talk about Yacine's C++ skills and SOLID principles Design Patterns Software Engineering, as they are the most relevant to his career. You can also mention his Python and LLM experience, but only as secondary information.
-
-Imperative rules:
-- Speak about Yacine in the third person (e.g., "Yacine worked on...", "His skills include..."). NEVER answer using "I" or "me" to refer to him.
-- Answer in the language used by the visitor.
-- Stay strictly focused on the information provided in Yacine's resume and portfolio; politely decline any off-topic questions.
-- Keep answers concise (3 to 6 sentences), maintaining a professional and friendly tone.
-- If the requested information is not available in the context or resume, state it clearly: NEVER fabricate information.
+api/index.py imports stream_answer from here and does not know which
+provider answered. Provider selection and fallback live in this file.
 """
 
-@lru_cache
-def get_client() -> AsyncOpenAI:
+import logging
+from collections.abc import AsyncGenerator
 
-    settings = get_settings()
-    return AsyncOpenAI(
-        base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-        api_key=settings.gemini_api_key.get_secret_value(),
-    )
+from openai import InternalServerError, RateLimitError
 
+from rag.config import get_settings
+from rag.providers import gemini, groq
+from rag.schemas import ChatMessage
 
-def build_messages(
-    question: str,
-    history: list[ChatMessage],
-    context: str = "",
-) -> list[dict]:
-    settings = get_settings()
+logger = logging.getLogger("uvicorn.error")
 
-    system = SYSTEM_PROMPT
-    if context:
-        system += f"\n\nReliable excerpts from the CV :\n{context}"
-
-    messages: list[dict] = [{"role": "system", "content": system}]
-    messages += [msg.model_dump() for msg in history[-settings.max_history:]]
-    messages.append({"role": "user", "content": question})
-    return messages
-
+# Fail fast: refuse to start with an impossible provider configuration.
+_settings = get_settings()
+if _settings.llm_provider == "groq" and _settings.groq_api_key is None:
+    raise RuntimeError("LLM_PROVIDER=groq but GROQ_API_KEY is missing in .env")
 
 async def stream_answer(
     question: str,
     history: list[ChatMessage] | None = None,
     context: str = "",
 ) -> AsyncGenerator[str, None]:
-    """Ask a question to the LLM and stream the answer as it is generated."""
-    history = history or []
+    settings = get_settings()
 
-    stream = await get_client().chat.completions.create(
-        model=get_settings().llm_model,
-        max_tokens=4000,
-        messages=build_messages(question, history, context),
-        temperature=get_settings().temperature,
-        stream=True,
-        reasoning_effort=get_settings().reasoning_effort,
-    )
+    # Provider selection: config decides the primary, the other one is the fallback.
+    primary = gemini if settings.llm_provider == "gemini" else groq
+    fallback = groq if primary is gemini else gemini
 
-    async for chunk in stream:
-        if chunk.choices and chunk.choices[0].delta.content:
-            yield chunk.choices[0].delta.content
+    try:
+        first_token, stream = await _open_stream(primary, question, history, context)
+    except (RateLimitError, InternalServerError) as exc:
+        logger.warning("%s unavailable (%s) — falling back",
+                       primary.__name__, exc)
+        first_token, stream = await _open_stream(fallback, question, history, context)
+
+    if first_token is not None:
+        yield first_token
+    async for token in stream:
+        yield token
+
+
+async def _open_stream(provider, question, history, context):
+    """Open the stream NOW and return (first_token, rest_of_stream).
+
+    Forcing the first __anext__() is what makes provider errors (429,
+    503...) surface HERE — inside the facade's try/except — instead of
+    during the later, unprotected iteration. The first token is buffered
+    and re-yielded so nothing is lost.
+    """
+    agen = provider.stream_answer(question, history, context)
+    try:
+        first_token = await agen.__anext__()
+    except StopAsyncIteration:
+        return None, agen  # empty stream (no error, no content)
+    return first_token, agen
