@@ -13,7 +13,7 @@ class Settings(BaseSettings):
 
     gemini_api_key: SecretStr
 
-    llm_model: str = "gemini-2.5-flash"
+    llm_model: str = "gemini-3.8-flash"
     embedding_model: str = "gemini-embedding-2"
 
     # RAG settings
