@@ -1,6 +1,9 @@
-from functools import lru_cache 
+from functools import lru_cache
+from typing import Literal
+
 from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
@@ -9,20 +12,30 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    # --- Routing & Server ---
+    llm_provider: Literal["gemini", "groq"] = "gemini"
     allowed_origins: str = "http://127.0.0.1:5500,http://localhost:5500"
 
-    gemini_api_key: SecretStr
+    # --- Shared LLM params (both providers) ---
+    temperature: float = 0.3
+    max_history: int = 5
+    max_output_tokens: int = 4000
 
+    # --- Gemini (primary) ---
+    gemini_api_key: SecretStr
     llm_model: str = "gemini-3.8-flash"
     embedding_model: str = "gemini-embedding-2"
     reasoning_effort: str = "low"
 
-    # RAG settings
+    # --- Groq (fallback) ---
+    groq_api_key: SecretStr | None = None
+    groq_model: str = "openai/gpt-oss-120b"
+
+    # --- RAG ---
     chunk_size: int = 1000
     chunk_overlap: int = 200
     top_k: int = 5
-    temperature: float = 0.3
-    max_history: int = 5
+
 
 @lru_cache
 def get_settings() -> Settings:
