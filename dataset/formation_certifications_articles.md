@@ -11,8 +11,9 @@ Project master :
 Contributions à l’analyse de l’architecture de traduction automatique de Google, en enrichissant les détails de l’article avec des explications sur le modèle Transformer, qui optimise la qualité et la performance des traductions. Participation active à la bibliothèque de Google en ajoutant du code source pour son intégration dans le projet TensorFlow, avec des ressources disponibles sur GitHub.
 
 
-Contribution Pull Request au github Transformer : [https://github.com/tensorflow/tensor2tensor/pull/1675]
-Ma these sur github : [https://github.com/tensorflow/tensor2tensor/pull/1675]
+Contribution Pull Request au github Tensor2Tensor de Google : [https://github.com/tensorflow/tensor2tensor/pull/1675]
+
+Ma these des transformers sur github (elle contient le PDF): [https://github.com/Styleoshin/Transformer]
 
 ## Licence (BAC+3), Informatique
 
