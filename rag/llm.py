@@ -63,6 +63,7 @@ async def stream_answer(
         messages=build_messages(question, history, context),
         temperature=get_settings().temperature,
         stream=True,
+        reasoning_effort=get_settings().reasoning_effort,
     )
 
     async for chunk in stream:
