@@ -10,7 +10,7 @@ from pathlib import Path
 from pydantic import BaseModel, Field
 
 from rag.config import get_settings
-from rag.llm import get_client
+from rag.providers.gemini import get_client
 
 CV_DIR = Path("dataset")
 INDEX_PATH = Path("rag/index.json")
