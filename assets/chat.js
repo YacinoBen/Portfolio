@@ -80,8 +80,9 @@ function makeSSEParser(onEvent) {
 // --- Public API: the single entry point for the future UI ---
 
 export async function sendMessage(question, ui) {
-  let answer = "";   // tokens accumulate here -> the FULL answer
+  let answer = "";
   let failed = false;
+  let finished = false;
 
   const handleChunk = makeSSEParser((event) => {
     switch (event.type) {
@@ -91,13 +92,12 @@ export async function sendMessage(question, ui) {
         break;
 
       case "error":
-        // In-band failure (e.g. rate limit): the server still sends
-        // "done" afterwards, so we must NOT record a partial answer.
         failed = true;
         ui.onError(event.message);
         break;
 
       case "done":
+        finished = true;
         if (!failed) rememberExchange(question, answer);
         ui.onDone();
         break;
@@ -115,7 +115,10 @@ export async function sendMessage(question, ui) {
       handleChunk(value);
     }
   } catch (err) {
-    // Network failure, API down, HTTP error status...
     ui.onError(err.message);
+  } finally {
+    // Guarantee the UI unlocks even if the stream died without its
+    // "done" event (crash, timeout, network cut).
+    if (!finished) ui.onDone();
   }
 }
