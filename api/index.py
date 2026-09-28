@@ -14,6 +14,7 @@ from pydantic import BaseModel
 
 from rag.config import get_settings
 from rag.llm import stream_answer
+from rag.providers.rewriter import rewrite_query
 from rag.retrieval import format_context, search
 from rag.schemas import (
     ChatRequest,
@@ -30,7 +31,7 @@ settings = get_settings()
 app = FastAPI(
     title="Portfolio RAG API",
     version="0.1.0",
-    description="Chat with my CV — Gemini embeddings + Gemini Flash, streamed as SSE.",
+    description="Chat with my CV — RAG with embeddings + LLM, streamed as SSE.",
 )
 
 app.add_middleware(
@@ -54,18 +55,26 @@ async def health() -> dict[str, str]:
 
 @app.post("/api/chat")
 async def chat(request: ChatRequest, debug: bool = False) -> StreamingResponse:
-    """Full RAG pipeline: validate -> retrieve -> stream (Server-Sent Events)."""
-    # 1. Retrieval: find the CV chunks most relevant to the question.
+    """Full RAG pipeline: rewrite -> retrieve -> stream (Server-Sent Events)."""
+
+    # 0. Input gate: fix typos/grammar BEFORE retrieval and generation.
+    #    The visitor still sees THEIR message in the UI; only the pipeline
+    #    works with the corrected version.
+    question = await rewrite_query(request.message)
+
+    # 1. Retrieval: find the CV chunks most relevant to the corrected question.
     try:
-        scored = await search(request.message)
+        scored = await search(question)
     except Exception as exc:
         # Error BEFORE streaming: headers not sent yet, a proper HTTP
         # error status is still possible.
         raise HTTPException(status_code=503, detail="Retrieval unavailable") from exc
 
     # 2. Telemetry: for the developer's logs, never shown to visitors.
+    #    Both versions logged so you can SEE what the rewriter changed.
     logger.info(
-        "retrieval %r -> %s",
+        "retrieval %r (asked: %r) -> %s",
+        question[:60],
         request.message[:60],
         [(c.source, round(score, 2)) for score, c in scored],
     )
@@ -83,7 +92,7 @@ async def chat(request: ChatRequest, debug: bool = False) -> StreamingResponse:
             ]))
 
         try:
-            async for token in stream_answer(request.message, request.history, context):
+            async for token in stream_answer(question, request.history, context):
                 yield _sse(TokenEvent(content=token))
         except RateLimitError:
             yield _sse(ErrorEvent(message="Rate limit reached — please retry in a minute."))
