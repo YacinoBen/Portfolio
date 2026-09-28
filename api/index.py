@@ -86,10 +86,9 @@ async def chat(request: ChatRequest, debug: bool = False) -> StreamingResponse:
             async for token in stream_answer(request.message, request.history, context):
                 yield _sse(TokenEvent(content=token))
         except RateLimitError:
-            # Error DURING the stream: the 200 status is already sent,
-            # so the failure is signalled in-band with a typed event.
             yield _sse(ErrorEvent(message="Rate limit reached — please retry in a minute."))
-
-        yield _sse(DoneEvent())
+        except Exception:
+            logger.exception("LLM call failed")  # full traceback in server logs
+            yield _sse(ErrorEvent(message="The assistant is unavailable — please try again in a moment."))
 
     return StreamingResponse(event_stream(), media_type="text/event-stream")
