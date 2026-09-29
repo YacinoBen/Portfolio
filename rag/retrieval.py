@@ -71,6 +71,12 @@ def cosine_similarity(a: list[float], b: list[float]) -> float:
     norm_b = math.sqrt(sum(x * x for x in b))
     return dot / (norm_a * norm_b) if norm_a and norm_b else 0.0
 
+def test_index_json_is_valid():
+    """Merge-conflict detector: a conflicted index.json contains git markers."""
+    import json
+    from rag.retrieval import INDEX_PATH
+    data = json.loads(INDEX_PATH.read_text(encoding="utf-8"))  # would raise on <<<<<<<
+    assert len(data) > 0
 
 @lru_cache
 def load_index() -> tuple[Chunk, ...]:
