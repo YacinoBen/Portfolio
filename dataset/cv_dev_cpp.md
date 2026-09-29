@@ -12,11 +12,6 @@
 
 Environnement technique : C++, STL, Qt6, QML, Multi-threading, Git, CMake, SQLite, QRhi, GLSL, Shader, Halide, OpenImageIO, OpenColorIO, OpenCV, vcpkg, GitHub Actions (CI/CD), SonarQube, spdlog, magic-enum, exiv2, Docker
 
-### Consultant IT – PMY Group – 2024 – Avril 2024 – Septembre 2024 – Saint Denis, France
-
-- Piloter et coordonne les équipes techniques et les partenaires internationaux pour la livraison des services technologiques (IT, Réseaux, Télécommunication, Scoring) au Stade de France pour les Jeux Olympiques et Paralympiques de Paris 2024
-- Coordonner en temps réel les équipes pluridisciplinaires pour garantir la haute disponibilité des infrastructures
-
 ### Développeur C++ – Hôpital de Gdyel – Décembre 2023 – Avril 2024 – Algérie
 
 - Concevoir un navigateur applicatif performant pour l'encapsulation d'une solution de gestion patient, garantissant une interface fluide et réactive.
