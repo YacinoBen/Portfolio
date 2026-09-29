@@ -11,3 +11,11 @@ dependencies = [
 
 [tool.vercel]
 entrypoint = "api.index:app"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "-m 'not integration'"
+markers = [
+    "integration: calls real external APIs (run explicitly with -m integration)",
+]
+pythonpath = ["."]
