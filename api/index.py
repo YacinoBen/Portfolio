@@ -100,4 +100,6 @@ async def chat(request: ChatRequest, debug: bool = False) -> StreamingResponse:
             logger.exception("LLM call failed")  # full traceback in server logs
             yield _sse(ErrorEvent(message="The assistant is unavailable — please try again in a moment."))
 
+        yield _sse(DoneEvent())
+
     return StreamingResponse(event_stream(), media_type="text/event-stream")
