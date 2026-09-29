@@ -19,3 +19,6 @@ markers = [
     "integration: calls real external APIs (run explicitly with -m integration)",
 ]
 pythonpath = ["."]
+
+[tool.setuptools.packages.find]
+include = ["rag*", "api"] 
