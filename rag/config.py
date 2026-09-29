@@ -21,9 +21,6 @@ class Settings(BaseSettings):
     max_history: int = 5
     max_output_tokens: int = 4000
 
-    # Rewriter
-    rewriter_model: str = "openai/gpt-oss-20b"
-
     # --- Gemini (primary) ---
     gemini_api_key: SecretStr
     llm_model: str = "gemini-3.8-flash"
@@ -33,6 +30,7 @@ class Settings(BaseSettings):
     # --- Groq (fallback) ---
     groq_api_key: SecretStr | None = None
     groq_model: str = "openai/gpt-oss-120b"
+    rewriter_model: str = "openai/gpt-oss-20b"
 
 
     # --- RAG ---
