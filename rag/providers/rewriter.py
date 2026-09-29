@@ -53,7 +53,7 @@ async def rewrite_query(question: str) -> str:
             logger.info("Query rewritten: %r -> %r", question[:60], corrected[:60])
         return corrected
 
-    except Exception as exc:
+    except Exception as exc: # noqa: BLE001
         # Fail-open: a broken rewriter must degrade to "no correction",
         # exactly like before this feature existed. Never block the chat.
         logger.warning("Query rewrite failed (%s) — using original", exc)

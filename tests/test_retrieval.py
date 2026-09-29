@@ -1,6 +1,5 @@
 from rag.retrieval import _split_long, chunk_markdown, cosine_similarity
 
-
 # --- cosine similarity ---
 
 def test_identical_vectors_score_one():

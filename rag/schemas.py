@@ -4,7 +4,6 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-
 # --- HTTP request contract (consumers: rag/llm.py, api/index.py) ---
 
 class ChatMessage(BaseModel):
