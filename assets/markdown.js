@@ -20,8 +20,8 @@ function escapeHtml(t) {
 export function renderMarkdown(md) {
     let t = escapeHtml(md);
 
-    // [text](url) — standard markdown links
-    t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+    // [text](url) — accepts http(s) AND mailto: links (e.g. [email](mailto:...))
+    t = t.replace(/\[([^\]]+)\]\(((?:https?:\/\/|mailto:)[^\s)]+)\)/g,
         '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
 
     // <https://...> autolinks — escaped form is &lt;...&gt;  ← NEW
