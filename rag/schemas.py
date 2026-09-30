@@ -7,16 +7,12 @@ from pydantic import BaseModel, Field
 # --- HTTP request contract (consumers: rag/llm.py, api/index.py) ---
 
 class ChatMessage(BaseModel):
-    """A message of the conversation, as exchanged with the frontend."""
-
     role: Literal["user", "assistant"]
     content: str = Field(min_length=1, max_length=4000)
 
 
 class ChatRequest(BaseModel):
-    """Request sent by the portfolio chat widget."""
-
-    message: str = Field(min_length=1, max_length=1000)
+    message: str = Field(min_length=1, max_length=4000)
     history: list[ChatMessage] = Field(default_factory=list, max_length=20)
 
 
