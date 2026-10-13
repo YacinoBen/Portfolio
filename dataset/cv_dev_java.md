@@ -1,9 +1,9 @@
-# Développeur C++ Confirmé
+# Développeur Java
 ## PROJETS
 
-- Concevoir et développer un logiciel desktop permettant de concevoir, éditer et exporter des diagrammes UML 
-- Développer un jeu de Scrabble jouable en local et en réseau avec synchronisation en temps réel via WebSocket
-- Développer un outil d'analyse d'images basé sur des métriques de distance (couleur, texture, structure arborescente).
+- Concevoir un logiciel desktop d'édition et d'export de diagrammes UML en Java (JavaFX, design patterns MVC/Command/Observer).
+- Développer un jeu de Scrabble multijoueur local et réseau avec synchronisation temps réel via WebSocket 
+- Réaliser un outil d'analyse et de comparaison d'images basé sur des métriques couleur, texture et structure
 - Implémenter une version complète du classique Space Invaders (Java).
 
 Environnement technique : Java, Swing, JavaFX, JFoenix, WebSocket, JNI, Jenkins, C++, Mobile, Maven, Gradle
