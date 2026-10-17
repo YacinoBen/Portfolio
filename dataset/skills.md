@@ -11,7 +11,7 @@
 
 ## Langages de Programmation
 * **C++** : Maîtrise des standards C++98, C++03, C++11, C++14, C++17, C++20 et C++23.
-* **Python** : Python 3, scripting, FastAPI, développement de modules IA et d'IHM.
+* **Python** : Python 3, scripting, FastAPI, développement de modules IA et d'IHM, OpenAISDK, pydantic
 * **Autres Langages** : C, Java, JavaScript, QML, PHP, C#.
 
 ## C++ Avancé, Concurrence & Performance
