@@ -1,7 +1,7 @@
 # 📸 Capture Moment
 
 **Capture Moment** est une application open source (GPLv3) et multiplateforme (desktop et mobile) d'édition photo non destructive. Conçue pour les photographes professionnels et amateurs éclairés, elle offre un workflow moderne, performant et fidèle aux couleurs, combinant le dématricage RAW, le catalogage et une gestion de la couleur de niveau professionnel.
-
+[Capture-Moment/CaptureMoment](https://github.com/Capture-Moment/CaptureMoment)
 ---
 
 ## 🎯 Objectif du Projet
@@ -46,7 +46,7 @@ Capture Moment repose sur un écosystème C++20/C++23 moderne et modulaire, sél
 
 ## 🔗 Liens & Ressources
 
-* **Dépôt GitHub** : [YacinoBen/CaptureMoment](https://github.com/YacinoBen/CaptureMoment)
+* **Dépôt GitHub** : [Capture-Moment/CaptureMoment](https://github.com/Capture-Moment/CaptureMoment)
 * **Architecture** : Consulter la *General Architecture Document* sur le dépôt pour le détail des choix techniques et de la roadmap.
 * **Installation & Build** : Guide de compilation disponible pour Windows, macOS, Linux et les gestionnaires de paquets (Vcpkg, Homebrew, apt/dnf).
 
