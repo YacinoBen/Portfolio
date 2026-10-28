@@ -4,7 +4,7 @@
 
 ### Développeur C++ – Indépendant – Avril 2025 – Présent – Ile-de-France, France
 
-#### Édition du logiciel open source Capture Moment (Github) (LinkedIn)
+#### Édition du logiciel Capture Moment [Github] (https://github.com/Capture-Moment/CaptureMoment) [LinkedIn ](https://www.linkedin.com/company/capture-moment)
 - Concevoir l'architecture logicielle modulaire d'un moteur de traitement d'image haute performance en C++20/23, avec séparation stricte Core / Rendu / UI pour garantir maintenabilité et portabilité multiplateforme
 - Développer un moteur de calcul multi-threadé (concurrence, RAII, smart pointers) pour optimiser les transferts d'ownership pour prévenir les fuites mémoire et les goulets d'étranglement sur des flux volumineux
 - Optimiser la parallélisation des algorithmes de traitement d'image via accélération SIMD et GPU
